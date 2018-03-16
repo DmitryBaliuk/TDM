@@ -73,6 +73,7 @@
     <Compile Include="Conv\ConvSAPDepts.cs" />
     <Compile Include="Conv\ConvShortIncTMx.cs" />
     <Compile Include="Conv\IConvertor.cs" />
+    <Compile Include="DataModel\Asset.cs" />
     <Compile Include="DataModel\Hierarchy.cs" />
     <Compile Include="DataModel\HierarchyAssignment.cs" />
     <Compile Include="DataModel\HierarchyNode.cs" />
@@ -84,6 +85,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers\AssetMasterSerializator.cs" />
+    <Compile Include="Serializers\HierarchySerializator.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,6 +10,7 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using TDM.Serializers;
 
 namespace TDM.Controller
 {
@@ -48,6 +49,11 @@ namespace TDM.Controller
             List<HierarchyAssignment> hierarchyAssignment = new List<HierarchyAssignment>();
             List<HierarchyNode> hierarchyNodePairs = new List<HierarchyNode>();
             HashSet<string> assets = new HashSet<string>();
+
+            List<Asset> assetMaster = new List<Asset>();
+            var assetSerial = new AssetMasterSerializator();
+            assetMaster = assetSerial.DeserializeAssetCSV();
+
             foreach (var hPair in hierarchy.HierarchyPairs)
             {
                 assets.Add(hPair[0]);
@@ -66,14 +72,27 @@ namespace TDM.Controller
             {
                 HierarchyAssignment child = hierarchyAssignment.Find(x => x.AssetId == hPair[0]);
                 HierarchyAssignment parent = hierarchyAssignment.Find(x => x.AssetId == hPair[1]);
+                Asset asset = assetMaster.Find(x => x.AssetId == hPair[0]);
                 hierarchyNodePairs.Add(new HierarchyNode()
                 {
                     NodeId = child.NodeId,
                     HierarchyId = child.HierarchyId,
                     ParentNodeId = parent.NodeId,
-                    Name = ""
+                    Name = asset.Name
                 });
             }
+
+            hierarchyNodePairs.Add(new HierarchyNode()
+            {
+                NodeId = hierarchyAssignment.Find(x => x.AssetId == hierarchy.RootAssetId).NodeId,
+                HierarchyId = hierarchy.HierarchyId,
+                ParentNodeId = "0",
+                Name = assetMaster.Find(x => x.AssetId == hierarchy.RootAssetId).Name
+            });
+
+            var ser = new HierarchySerializator();
+            ser.SerializeHierarchy(hierarchy, hierarchyAssignment, hierarchyNodePairs);
+
 
             return result;
         }

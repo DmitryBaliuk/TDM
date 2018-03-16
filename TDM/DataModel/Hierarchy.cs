@@ -16,10 +16,13 @@ namespace TDM.DataModel
         [DataMember]
         private string hierarchyName;
         [DataMember]
+        private string rootAssetId;
+        [DataMember]
         private List<string[]> hierarchyPairs;
 
         public string HierarchyId { get => hierarchyId; set => hierarchyId = value; }
         public string HierarchyName { get => hierarchyName; set => hierarchyName = value; }
         public List<string[]> HierarchyPairs { get => hierarchyPairs; set => hierarchyPairs = value; }
+        public string RootAssetId { get => rootAssetId; set => rootAssetId = value; }
     }
 }
