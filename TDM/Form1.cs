@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using TDM.Conv;
 using TDM.Controller;
 using TDM.DataModel;
+using TDM.Serializers;
 
 namespace TDM
 {
@@ -86,6 +87,17 @@ namespace TDM
         {
             string res = contr.BuildHierarchyTableData();
             MessageBox.Show(res == "1" ? "Success" : "Fail");
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            MetaModel mm = (new MetaDataSimulator()).Simulate();
+
+            //contr.SerilizeMetaModel(mm);
+
+            MetaModelSerializator ser = new MetaModelSerializator();
+            ser.SerializeHierarchy(mm);
+
         }
     }
 }

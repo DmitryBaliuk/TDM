@@ -58,6 +58,7 @@
             this.btnConvDailyETF = new System.Windows.Forms.Button();
             this.tBConvDailyETFSrc = new System.Windows.Forms.TextBox();
             this.tBConvDailyETFRes = new System.Windows.Forms.TextBox();
+            this.btnCheck = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPTDMDataInit.SuspendLayout();
@@ -187,6 +188,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnCheck);
             this.tabPage1.Controls.Add(this.btnBuildHierarchy);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -371,6 +373,16 @@
             this.tBConvDailyETFRes.Text = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\Tecnológico de Monterrey Value Prototy" +
     "ping\\DAILY_DATA\\daily_etf_conv.csv";
             // 
+            // btnCheck
+            // 
+            this.btnCheck.Location = new System.Drawing.Point(19, 425);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(98, 48);
+            this.btnCheck.TabIndex = 1;
+            this.btnCheck.Text = "check";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -423,6 +435,7 @@
         private System.Windows.Forms.Button btnConvDailyMexBonds;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnBuildHierarchy;
+        private System.Windows.Forms.Button btnCheck;
     }
 }
 

@@ -28,6 +28,18 @@ namespace TDM.Controller
             File.WriteAllText(Constants.HierarchySource, result);
         }
 
+        public void SerilizeMetaModel(MetaModel obj)
+        {
+            MemoryStream stream = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(MetaModel));
+            ser.WriteObject(stream, obj);
+            byte[] json = stream.ToArray();
+            stream.Close();
+            string jsonStr = Encoding.UTF8.GetString(json, 0, json.Length);
+            string result = JValue.Parse(jsonStr).ToString(Formatting.Indented);
+            File.WriteAllText(Constants.MetaModelSrc, result);
+        }
+
         public Hierarchy DeserilizeHierarchy(string path)
         {
             Hierarchy result = new Hierarchy();
