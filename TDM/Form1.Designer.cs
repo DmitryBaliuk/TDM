@@ -59,6 +59,9 @@
             this.tBConvDailyETFSrc = new System.Windows.Forms.TextBox();
             this.tBConvDailyETFRes = new System.Windows.Forms.TextBox();
             this.btnCheck = new System.Windows.Forms.Button();
+            this.btnParseLongTermFixIncCSV = new System.Windows.Forms.Button();
+            this.btnEnrichHierarchy = new System.Windows.Forms.Button();
+            this.openFDEnrichHierarchy = new System.Windows.Forms.OpenFileDialog();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPTDMDataInit.SuspendLayout();
@@ -188,6 +191,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnEnrichHierarchy);
+            this.tabPage1.Controls.Add(this.btnParseLongTermFixIncCSV);
             this.tabPage1.Controls.Add(this.btnCheck);
             this.tabPage1.Controls.Add(this.btnBuildHierarchy);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -201,7 +206,7 @@
             // 
             this.btnBuildHierarchy.Location = new System.Drawing.Point(19, 14);
             this.btnBuildHierarchy.Name = "btnBuildHierarchy";
-            this.btnBuildHierarchy.Size = new System.Drawing.Size(172, 39);
+            this.btnBuildHierarchy.Size = new System.Drawing.Size(215, 39);
             this.btnBuildHierarchy.TabIndex = 0;
             this.btnBuildHierarchy.Text = "Build Hierarchy Tables";
             this.btnBuildHierarchy.UseVisualStyleBackColor = true;
@@ -383,6 +388,31 @@
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
+            // btnParseLongTermFixIncCSV
+            // 
+            this.btnParseLongTermFixIncCSV.Location = new System.Drawing.Point(19, 60);
+            this.btnParseLongTermFixIncCSV.Name = "btnParseLongTermFixIncCSV";
+            this.btnParseLongTermFixIncCSV.Size = new System.Drawing.Size(215, 43);
+            this.btnParseLongTermFixIncCSV.TabIndex = 2;
+            this.btnParseLongTermFixIncCSV.Text = "Parse Long Term Fix Inc CSV";
+            this.btnParseLongTermFixIncCSV.UseVisualStyleBackColor = true;
+            this.btnParseLongTermFixIncCSV.Click += new System.EventHandler(this.btnParseLongTermFixIncCSV_Click);
+            // 
+            // btnEnrichHierarchy
+            // 
+            this.btnEnrichHierarchy.Location = new System.Drawing.Point(269, 14);
+            this.btnEnrichHierarchy.Name = "btnEnrichHierarchy";
+            this.btnEnrichHierarchy.Size = new System.Drawing.Size(224, 39);
+            this.btnEnrichHierarchy.TabIndex = 3;
+            this.btnEnrichHierarchy.Text = "Enrich Hierarchy from CSV";
+            this.btnEnrichHierarchy.UseVisualStyleBackColor = true;
+            this.btnEnrichHierarchy.Click += new System.EventHandler(this.btnEnrichHierarchy_Click);
+            // 
+            // openFDEnrichHierarchy
+            // 
+            this.openFDEnrichHierarchy.FileName = "openFDEnrichHierarchy";
+            this.openFDEnrichHierarchy.InitialDirectory = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\TDM Convertor files";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,6 +466,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnBuildHierarchy;
         private System.Windows.Forms.Button btnCheck;
+        private System.Windows.Forms.Button btnParseLongTermFixIncCSV;
+        private System.Windows.Forms.Button btnEnrichHierarchy;
+        private System.Windows.Forms.OpenFileDialog openFDEnrichHierarchy;
     }
 }
 

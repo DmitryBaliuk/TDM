@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using TDM.Serializers;
+using TDM.Parsers;
 
 namespace TDM.Controller
 {
@@ -107,6 +108,43 @@ namespace TDM.Controller
 
 
             return result;
+        }
+
+        public void SerializeSCVSettings(string path, CSVSettingsMap setMap)
+        {
+            MemoryStream stream = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(CSVSettingsMap));
+            ser.WriteObject(stream, setMap);
+            byte[] json = stream.ToArray();
+            stream.Close();
+            string jsonStr = Encoding.UTF8.GetString(json, 0, json.Length);
+            string result = JValue.Parse(jsonStr).ToString(Formatting.Indented);
+            File.WriteAllText(path, result);
+        }
+
+        public CSVSettingsMap DeserilizeSCVSettings(string path)
+        {
+            CSVSettingsMap result = new CSVSettingsMap();
+
+            string json = File.ReadAllText(path);
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(result.GetType());
+            result = ser.ReadObject(ms) as CSVSettingsMap;
+            ms.Close();
+
+            return result;
+        }
+
+        public string ParseLongTermFixInc()
+        {
+            string res = "1";
+            SettingsLongTermCSVSimulator setSim = new SettingsLongTermCSVSimulator();
+            CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapCSVLongTerm);
+            LongTermFixIncParser parser = new LongTermFixIncParser();
+            StringBuilder str = parser.parseSCV(Constants.Src_LongTermFixInc, settings);
+            File.WriteAllText(Constants.Res_TimeSerLongTermFixInc, str.ToString());
+
+            return res;
         }
     }
 }

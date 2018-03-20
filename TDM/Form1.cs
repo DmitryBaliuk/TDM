@@ -13,6 +13,7 @@ using TDM.Conv;
 using TDM.Controller;
 using TDM.DataModel;
 using TDM.Serializers;
+using TDM.Parsers;
 
 namespace TDM
 {
@@ -91,13 +92,48 @@ namespace TDM
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            MetaModel mm = (new MetaDataSimulator()).Simulate();
+            //SettingsLongTermCSVSimulator setSim = new SettingsLongTermCSVSimulator();
+            //CSVSettingsMap settings = setSim.Simulate();
+            //contr.SerializeSCVSettings(Constants.SetMapCSVLongTerm, settings);
+            //MetaModel mm = (new MetaDataSimulator()).Simulate();
 
             //contr.SerilizeMetaModel(mm);
 
-            MetaModelSerializator ser = new MetaModelSerializator();
-            ser.SerializeHierarchy(mm);
+            //MetaModelSerializator ser = new MetaModelSerializator();
+            //ser.SerializeHierarchy(mm);
 
+        }
+
+        private void btnParseLongTermFixIncCSV_Click(object sender, EventArgs e)
+        {
+            string res = contr.ParseLongTermFixInc();
+            MessageBox.Show(res == "1" ? "Success" : "Fail");
+        }
+
+        private void btnEnrichHierarchy_Click(object sender, EventArgs e)
+        {
+            if (openFDEnrichHierarchy.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(openFDEnrichHierarchy.FileName);
+                
+                string[] stringSeparators = new string[] { "\r\n" };
+                string[] hierarchyNodes = (sr.ReadToEnd()).Split(stringSeparators, StringSplitOptions.None);
+
+                Hierarchy hier = contr.DeserilizeHierarchy(Constants.HierarchySource);
+
+                foreach (var pair in hierarchyNodes)
+                {
+                    if (pair.Length != 0)
+                    {
+                        string[] combination = pair.Split(',');
+                        hier.HierarchyPairs.Add(new string[] { combination[1], combination[0] });
+                    }
+                    
+                }
+
+                contr.SerilizeHierarchy(hier);
+                sr.Close();
+            }
         }
     }
 }
