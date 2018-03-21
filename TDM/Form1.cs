@@ -126,14 +126,65 @@ namespace TDM
                     if (pair.Length != 0)
                     {
                         string[] combination = pair.Split(',');
-                        hier.HierarchyPairs.Add(new string[] { combination[1], combination[0] });
+                        hier.HierarchyPairs.Add(new string[] { combination[0], combination[1] });
                     }
-                    
                 }
 
                 contr.SerilizeHierarchy(hier);
                 sr.Close();
             }
+        }
+
+        private void btnValidateAssets_Click(object sender, EventArgs e)
+        {
+            if (openFDEnrichHierarchy.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(openFDEnrichHierarchy.FileName);
+
+                string[] stringSeparators = new string[] { "\r\n" };
+                string[] assets = (sr.ReadToEnd()).Split(stringSeparators, StringSplitOptions.None);
+                Hierarchy hier = contr.DeserilizeHierarchy(Constants.HierarchySource);
+                List<Asset> assetMaster = contr.DeserializeAssets();
+                List<string> newAssets = new List<string>();
+                List<string> newHierNode = new List<string>();
+
+                foreach (var asset in assets)
+                {
+                    if (asset.Length != 0)
+                    {
+                        string[] assetDetails = asset.Split(',');
+                        var finding = assetMaster.Find(x => x.AssetId == assetDetails[0]);
+                        if (finding == null)
+                        {
+                            assetMaster.Add(new Asset()
+                            {
+                                AssetId = assetDetails[0],
+                                AssetTypeId = assetDetails[2],
+                                Name = assetDetails[3]
+                            });
+                        }
+
+                        var findingH = hier.HierarchyPairs.Find(x => x[0] == assetDetails[0]);
+                        if (findingH == null)
+                        {
+                            hier.HierarchyPairs.Add(new string[]
+                            {
+                                assetDetails[0], assetDetails[1]
+                            });
+                        }
+                    }
+                }
+
+                contr.SerilizeAssets(assetMaster);
+                contr.SerilizeHierarchy(hier);
+                sr.Close();
+            }
+        }
+
+        private void btnParseMexBondsD_Click(object sender, EventArgs e)
+        {
+            string res = contr.ParseMexBondsDaily();
+            MessageBox.Show(res == "1" ? "Success" : "Fail");
         }
     }
 }

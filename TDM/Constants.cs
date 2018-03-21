@@ -16,6 +16,8 @@ namespace TDM
                "TDM Convertor files\\assetMaster.txt";
         private static string setMapCSVLongTerm = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\01 Long Term Fix Inc Mex\\setMapCSVLongTerm.txt";
+        private static string setMapCSVMexBondsDaily = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+               "TDM Convertor files\\02 Mex Bonds Daily based\\setMapCSVMexBondDaily.txt";
 
         private static string res_HIERARCHY = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\res_HIERARCHY.csv";
@@ -38,6 +40,10 @@ namespace TDM
                "TDM Convertor files\\01 Long Term Fix Inc Mex\\src_long_term_fix_inc.csv";
         private static string res_TimeSerLongTermFixInc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
               "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSerLongTermFixInc.csv";
+        private static string src_MexBondsDaily = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+               "TDM Convertor files\\02 Mex Bonds Daily based\\daily_mex_bond.csv";
+        private static string res_TimeSerMexBondsDaily = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+              "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSerMexBondsDaily.csv";
 
         public static string HierarchySource { get => hierarchySrc; set => hierarchySrc = value; }
         public static string Res_HIERARCHY { get => res_HIERARCHY; set => res_HIERARCHY = value; }
@@ -53,5 +59,8 @@ namespace TDM
         public static string SetMapCSVLongTerm { get => setMapCSVLongTerm; set => setMapCSVLongTerm = value; }
         public static string Src_LongTermFixInc { get => src_LongTermFixInc; set => src_LongTermFixInc = value; }
         public static string Res_TimeSerLongTermFixInc { get => res_TimeSerLongTermFixInc; set => res_TimeSerLongTermFixInc = value; }
+        public static string SetMapCSVMexBondsDaily { get => setMapCSVMexBondsDaily; set => setMapCSVMexBondsDaily = value; }
+        public static string Src_MexBondsDaily { get => src_MexBondsDaily; set => src_MexBondsDaily = value; }
+        public static string Res_TimeSerMexBondsDaily { get => res_TimeSerMexBondsDaily; set => res_TimeSerMexBondsDaily = value; }
     }
 }

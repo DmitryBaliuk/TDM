@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using TDM.Serializers;
 using TDM.Parsers;
+using TDM.DataModel;
 
 namespace TDM.Controller
 {
@@ -27,6 +28,16 @@ namespace TDM.Controller
             string jsonStr = Encoding.UTF8.GetString(json, 0, json.Length);
             string result = JValue.Parse(jsonStr).ToString(Formatting.Indented);
             File.WriteAllText(Constants.HierarchySource, result);
+        }
+
+        public void SerilizeAssets(List<Asset> obj)
+        {
+            StringBuilder assets = new StringBuilder();
+            foreach (var asset in obj)
+            {
+                assets.AppendLine(asset.AssetId + "," + asset.AssetTypeId + "," + asset.Name);
+            }
+            File.WriteAllText(Constants.AssetMasterSrc, assets.ToString());
         }
 
         public void SerilizeMetaModel(MetaModel obj)
@@ -91,7 +102,7 @@ namespace TDM.Controller
                     NodeId = child.NodeId,
                     HierarchyId = child.HierarchyId,
                     ParentNodeId = parent.NodeId,
-                    Name = asset.Name
+                    Name = asset.Name == null ? "" : asset.Name
                 });
             }
 
@@ -138,13 +149,29 @@ namespace TDM.Controller
         public string ParseLongTermFixInc()
         {
             string res = "1";
-            SettingsLongTermCSVSimulator setSim = new SettingsLongTermCSVSimulator();
             CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapCSVLongTerm);
             LongTermFixIncParser parser = new LongTermFixIncParser();
             StringBuilder str = parser.parseSCV(Constants.Src_LongTermFixInc, settings);
             File.WriteAllText(Constants.Res_TimeSerLongTermFixInc, str.ToString());
 
             return res;
+        }
+
+        public string ParseMexBondsDaily()
+        {
+            string res = "1";
+            CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapCSVMexBondsDaily);
+            MexBondsDailyParser parser = new MexBondsDailyParser();
+            StringBuilder str = parser.parseSCV(Constants.Src_MexBondsDaily, settings);
+            File.WriteAllText(Constants.Res_TimeSerMexBondsDaily, str.ToString());
+
+            return res;
+        }
+
+        public List<Asset> DeserializeAssets()
+        {
+            List<Asset> result = (new AssetMasterSerializator()).DeserializeAssetCSV();
+            return result;
         }
     }
 }

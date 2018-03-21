@@ -62,6 +62,9 @@
             this.btnParseLongTermFixIncCSV = new System.Windows.Forms.Button();
             this.btnEnrichHierarchy = new System.Windows.Forms.Button();
             this.openFDEnrichHierarchy = new System.Windows.Forms.OpenFileDialog();
+            this.btnValidateAssets = new System.Windows.Forms.Button();
+            this.openFDGeneric = new System.Windows.Forms.OpenFileDialog();
+            this.btnParseMexBondsD = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPTDMDataInit.SuspendLayout();
@@ -191,6 +194,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnParseMexBondsD);
+            this.tabPage1.Controls.Add(this.btnValidateAssets);
             this.tabPage1.Controls.Add(this.btnEnrichHierarchy);
             this.tabPage1.Controls.Add(this.btnParseLongTermFixIncCSV);
             this.tabPage1.Controls.Add(this.btnCheck);
@@ -413,6 +418,30 @@
             this.openFDEnrichHierarchy.FileName = "openFDEnrichHierarchy";
             this.openFDEnrichHierarchy.InitialDirectory = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\TDM Convertor files";
             // 
+            // btnValidateAssets
+            // 
+            this.btnValidateAssets.Location = new System.Drawing.Point(524, 14);
+            this.btnValidateAssets.Name = "btnValidateAssets";
+            this.btnValidateAssets.Size = new System.Drawing.Size(219, 39);
+            this.btnValidateAssets.TabIndex = 4;
+            this.btnValidateAssets.Text = "Validate Asset and Hier. data";
+            this.btnValidateAssets.UseVisualStyleBackColor = true;
+            this.btnValidateAssets.Click += new System.EventHandler(this.btnValidateAssets_Click);
+            // 
+            // openFDGeneric
+            // 
+            this.openFDGeneric.FileName = "openFDGeneric";
+            // 
+            // btnParseMexBondsD
+            // 
+            this.btnParseMexBondsD.Location = new System.Drawing.Point(19, 109);
+            this.btnParseMexBondsD.Name = "btnParseMexBondsD";
+            this.btnParseMexBondsD.Size = new System.Drawing.Size(215, 43);
+            this.btnParseMexBondsD.TabIndex = 5;
+            this.btnParseMexBondsD.Text = "Parse Mex Bonds Daily CSV";
+            this.btnParseMexBondsD.UseVisualStyleBackColor = true;
+            this.btnParseMexBondsD.Click += new System.EventHandler(this.btnParseMexBondsD_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -469,6 +498,9 @@
         private System.Windows.Forms.Button btnParseLongTermFixIncCSV;
         private System.Windows.Forms.Button btnEnrichHierarchy;
         private System.Windows.Forms.OpenFileDialog openFDEnrichHierarchy;
+        private System.Windows.Forms.Button btnValidateAssets;
+        private System.Windows.Forms.OpenFileDialog openFDGeneric;
+        private System.Windows.Forms.Button btnParseMexBondsD;
     }
 }
 
