@@ -168,6 +168,17 @@ namespace TDM.Controller
             return res;
         }
 
+        public string ParsePeriodicETF()
+        {
+            string res = "1";
+            CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapCSV_ETF_data);
+            ETFParser parser = new ETFParser();
+            StringBuilder str = parser.parseSCV(Constants.Src_ETF_data, settings);
+            File.WriteAllText(Constants.Res_TimeSer_ETF_data, str.ToString());
+
+            return res;
+        }
+
         public List<Asset> DeserializeAssets()
         {
             List<Asset> result = (new AssetMasterSerializator()).DeserializeAssetCSV();

@@ -186,5 +186,11 @@ namespace TDM
             string res = contr.ParseMexBondsDaily();
             MessageBox.Show(res == "1" ? "Success" : "Fail");
         }
+
+        private void btnParsePeriodicETF_Click(object sender, EventArgs e)
+        {
+            string res = contr.ParsePeriodicETF();
+            MessageBox.Show(res == "1" ? "Success" : "Fail");
+        }
     }
 }

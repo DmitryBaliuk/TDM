@@ -91,6 +91,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parsers\ETFParser.cs" />
     <Compile Include="Parsers\LongTermFixIncParser.cs" />
     <Compile Include="Parsers\MexBondsDailyParser.cs" />
     <Compile Include="Program.cs" />
