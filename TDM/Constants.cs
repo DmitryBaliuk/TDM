@@ -20,7 +20,8 @@ namespace TDM
                "TDM Convertor files\\02 Mex Bonds Daily based\\setMapCSVMexBondDaily.txt";
         private static string setMapCSV_ETF_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\03 ETF init\\setMapCSV_ETF_data.txt";
-
+        private static string setMapCSV_ETF_daily_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+               "TDM Convertor files\\04 ETF daily\\setMapCSV_ETF_data.txt";
 
         private static string res_HIERARCHY = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\res_HIERARCHY.csv";
@@ -51,6 +52,10 @@ namespace TDM
             "TDM Convertor files\\03 ETF init\\src_ETF_data.csv";
         private static string res_TimeSer_ETF_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
             "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSer_ETF_data.csv";
+        private static string src_ETF_daily_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+            "TDM Convertor files\\04 ETF daily\\src_ETF_data.csv";
+        private static string res_TimeSer_ETF_daily_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+            "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSer_ETF_daily_data.csv";
 
         public static string HierarchySource { get => hierarchySrc; set => hierarchySrc = value; }
         public static string Res_HIERARCHY { get => res_HIERARCHY; set => res_HIERARCHY = value; }
@@ -72,5 +77,8 @@ namespace TDM
         public static string Res_TimeSer_ETF_data { get => res_TimeSer_ETF_data; set => res_TimeSer_ETF_data = value; }
         public static string Src_ETF_data { get => src_ETF_data; set => src_ETF_data = value; }
         public static string SetMapCSV_ETF_data { get => setMapCSV_ETF_data; set => setMapCSV_ETF_data = value; }
+        public static string SetMapCSV_ETF_daily_data { get => setMapCSV_ETF_daily_data; set => setMapCSV_ETF_daily_data = value; }
+        public static string Src_ETF_daily_data { get => src_ETF_daily_data; set => src_ETF_daily_data = value; }
+        public static string Res_TimeSer_ETF_daily_data { get => res_TimeSer_ETF_daily_data; set => res_TimeSer_ETF_daily_data = value; }
     }
 }

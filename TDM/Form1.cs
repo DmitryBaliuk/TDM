@@ -192,5 +192,11 @@ namespace TDM
             string res = contr.ParsePeriodicETF();
             MessageBox.Show(res == "1" ? "Success" : "Fail");
         }
+
+        private void btnParseDailyETF_Click(object sender, EventArgs e)
+        {
+            string res = contr.ParseDailyETF();
+            MessageBox.Show(res == "1" ? "Success" : "Fail");
+        }
     }
 }

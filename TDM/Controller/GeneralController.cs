@@ -12,7 +12,6 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using TDM.Serializers;
 using TDM.Parsers;
-using TDM.DataModel;
 
 namespace TDM.Controller
 {
@@ -175,6 +174,17 @@ namespace TDM.Controller
             ETFParser parser = new ETFParser();
             StringBuilder str = parser.parseSCV(Constants.Src_ETF_data, settings);
             File.WriteAllText(Constants.Res_TimeSer_ETF_data, str.ToString());
+
+            return res;
+        }
+
+        public string ParseDailyETF()
+        {
+            string res = "1";
+            CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapCSV_ETF_daily_data);
+            ETFParser parser = new ETFParser();
+            StringBuilder str = parser.parseSCV(Constants.Src_ETF_daily_data, settings);
+            File.WriteAllText(Constants.Res_TimeSer_ETF_daily_data, str.ToString());
 
             return res;
         }

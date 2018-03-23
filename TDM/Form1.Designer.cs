@@ -42,6 +42,7 @@
             this.tBConvShortTIncMxRes = new System.Windows.Forms.TextBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnParsePeriodicETF = new System.Windows.Forms.Button();
             this.btnParseMexBondsD = new System.Windows.Forms.Button();
             this.btnValidateAssets = new System.Windows.Forms.Button();
             this.btnEnrichHierarchy = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@
             this.tBConvDailyETFRes = new System.Windows.Forms.TextBox();
             this.openFDEnrichHierarchy = new System.Windows.Forms.OpenFileDialog();
             this.openFDGeneric = new System.Windows.Forms.OpenFileDialog();
-            this.btnParsePeriodicETF = new System.Windows.Forms.Button();
+            this.btnParseDailyETF = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPTDMDataInit.SuspendLayout();
@@ -195,6 +196,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnParseDailyETF);
             this.tabPage1.Controls.Add(this.btnParsePeriodicETF);
             this.tabPage1.Controls.Add(this.btnParseMexBondsD);
             this.tabPage1.Controls.Add(this.btnValidateAssets);
@@ -208,6 +210,16 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Data Model CSV Builder";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnParsePeriodicETF
+            // 
+            this.btnParsePeriodicETF.Location = new System.Drawing.Point(19, 158);
+            this.btnParsePeriodicETF.Name = "btnParsePeriodicETF";
+            this.btnParsePeriodicETF.Size = new System.Drawing.Size(215, 43);
+            this.btnParsePeriodicETF.TabIndex = 6;
+            this.btnParsePeriodicETF.Text = "Parse Periodic ETF";
+            this.btnParsePeriodicETF.UseVisualStyleBackColor = true;
+            this.btnParsePeriodicETF.Click += new System.EventHandler(this.btnParsePeriodicETF_Click);
             // 
             // btnParseMexBondsD
             // 
@@ -444,15 +456,15 @@
             // 
             this.openFDGeneric.FileName = "openFDGeneric";
             // 
-            // btnParsePeriodicETF
+            // btnParseDailyETF
             // 
-            this.btnParsePeriodicETF.Location = new System.Drawing.Point(19, 158);
-            this.btnParsePeriodicETF.Name = "btnParsePeriodicETF";
-            this.btnParsePeriodicETF.Size = new System.Drawing.Size(215, 43);
-            this.btnParsePeriodicETF.TabIndex = 6;
-            this.btnParsePeriodicETF.Text = "Parse Periodic ETF";
-            this.btnParsePeriodicETF.UseVisualStyleBackColor = true;
-            this.btnParsePeriodicETF.Click += new System.EventHandler(this.btnParsePeriodicETF_Click);
+            this.btnParseDailyETF.Location = new System.Drawing.Point(19, 207);
+            this.btnParseDailyETF.Name = "btnParseDailyETF";
+            this.btnParseDailyETF.Size = new System.Drawing.Size(215, 43);
+            this.btnParseDailyETF.TabIndex = 7;
+            this.btnParseDailyETF.Text = "Parse Daily ETF";
+            this.btnParseDailyETF.UseVisualStyleBackColor = true;
+            this.btnParseDailyETF.Click += new System.EventHandler(this.btnParseDailyETF_Click);
             // 
             // FormMain
             // 
@@ -514,6 +526,7 @@
         private System.Windows.Forms.OpenFileDialog openFDGeneric;
         private System.Windows.Forms.Button btnParseMexBondsD;
         private System.Windows.Forms.Button btnParsePeriodicETF;
+        private System.Windows.Forms.Button btnParseDailyETF;
     }
 }
 
