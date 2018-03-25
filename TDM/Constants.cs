@@ -10,6 +10,8 @@ namespace TDM
     {
         private static string hierarchySrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\hierarchy.txt";
+        private static string kpiHierarchySrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+               "TDM Convertor files\\KPIhierarchy.txt";
         private static string metaModelSrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\metaModel.txt";
         private static string assetMasterSrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
@@ -22,6 +24,8 @@ namespace TDM
                "TDM Convertor files\\03 ETF init\\setMapCSV_ETF_data.txt";
         private static string setMapCSV_ETF_daily_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\04 ETF daily\\setMapCSV_ETF_data.txt";
+        private static string setMapKPI = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+               "TDM Convertor files\\05 KPI\\setMapKPI.txt";
 
         private static string res_HIERARCHY = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\res_HIERARCHY.csv";
@@ -56,6 +60,10 @@ namespace TDM
             "TDM Convertor files\\04 ETF daily\\src_ETF_data.csv";
         private static string res_TimeSer_ETF_daily_data = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
             "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSer_ETF_daily_data.csv";
+        private static string src_KPI = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+            "TDM Convertor files\\05 KPI\\KPI.csv";
+        private static string res_TimeSer_KPI = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+            "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSer_KPI.csv";
 
         public static string HierarchySource { get => hierarchySrc; set => hierarchySrc = value; }
         public static string Res_HIERARCHY { get => res_HIERARCHY; set => res_HIERARCHY = value; }
@@ -80,5 +88,9 @@ namespace TDM
         public static string SetMapCSV_ETF_daily_data { get => setMapCSV_ETF_daily_data; set => setMapCSV_ETF_daily_data = value; }
         public static string Src_ETF_daily_data { get => src_ETF_daily_data; set => src_ETF_daily_data = value; }
         public static string Res_TimeSer_ETF_daily_data { get => res_TimeSer_ETF_daily_data; set => res_TimeSer_ETF_daily_data = value; }
+        public static string KpiHierarchySrc { get => kpiHierarchySrc; set => kpiHierarchySrc = value; }
+        public static string Src_KPI { get => src_KPI; set => src_KPI = value; }
+        public static string Res_TimeSer_KPI { get => res_TimeSer_KPI; set => res_TimeSer_KPI = value; }
+        public static string SetMapKPI { get => setMapKPI; set => setMapKPI = value; }
     }
 }

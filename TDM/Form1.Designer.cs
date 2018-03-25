@@ -42,6 +42,7 @@
             this.tBConvShortTIncMxRes = new System.Windows.Forms.TextBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnParseDailyETF = new System.Windows.Forms.Button();
             this.btnParsePeriodicETF = new System.Windows.Forms.Button();
             this.btnParseMexBondsD = new System.Windows.Forms.Button();
             this.btnValidateAssets = new System.Windows.Forms.Button();
@@ -66,7 +67,8 @@
             this.tBConvDailyETFRes = new System.Windows.Forms.TextBox();
             this.openFDEnrichHierarchy = new System.Windows.Forms.OpenFileDialog();
             this.openFDGeneric = new System.Windows.Forms.OpenFileDialog();
-            this.btnParseDailyETF = new System.Windows.Forms.Button();
+            this.btnValidateKPI = new System.Windows.Forms.Button();
+            this.btnParseKPI = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPTDMDataInit.SuspendLayout();
@@ -196,6 +198,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnParseKPI);
+            this.tabPage1.Controls.Add(this.btnValidateKPI);
             this.tabPage1.Controls.Add(this.btnParseDailyETF);
             this.tabPage1.Controls.Add(this.btnParsePeriodicETF);
             this.tabPage1.Controls.Add(this.btnParseMexBondsD);
@@ -210,6 +214,16 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Data Model CSV Builder";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnParseDailyETF
+            // 
+            this.btnParseDailyETF.Location = new System.Drawing.Point(19, 207);
+            this.btnParseDailyETF.Name = "btnParseDailyETF";
+            this.btnParseDailyETF.Size = new System.Drawing.Size(215, 43);
+            this.btnParseDailyETF.TabIndex = 7;
+            this.btnParseDailyETF.Text = "Parse Daily ETF";
+            this.btnParseDailyETF.UseVisualStyleBackColor = true;
+            this.btnParseDailyETF.Click += new System.EventHandler(this.btnParseDailyETF_Click);
             // 
             // btnParsePeriodicETF
             // 
@@ -456,15 +470,25 @@
             // 
             this.openFDGeneric.FileName = "openFDGeneric";
             // 
-            // btnParseDailyETF
+            // btnValidateKPI
             // 
-            this.btnParseDailyETF.Location = new System.Drawing.Point(19, 207);
-            this.btnParseDailyETF.Name = "btnParseDailyETF";
-            this.btnParseDailyETF.Size = new System.Drawing.Size(215, 43);
-            this.btnParseDailyETF.TabIndex = 7;
-            this.btnParseDailyETF.Text = "Parse Daily ETF";
-            this.btnParseDailyETF.UseVisualStyleBackColor = true;
-            this.btnParseDailyETF.Click += new System.EventHandler(this.btnParseDailyETF_Click);
+            this.btnValidateKPI.Location = new System.Drawing.Point(524, 64);
+            this.btnValidateKPI.Name = "btnValidateKPI";
+            this.btnValidateKPI.Size = new System.Drawing.Size(219, 39);
+            this.btnValidateKPI.TabIndex = 8;
+            this.btnValidateKPI.Text = "Validate KPI data";
+            this.btnValidateKPI.UseVisualStyleBackColor = true;
+            this.btnValidateKPI.Click += new System.EventHandler(this.btnValidateKPI_Click);
+            // 
+            // btnParseKPI
+            // 
+            this.btnParseKPI.Location = new System.Drawing.Point(19, 256);
+            this.btnParseKPI.Name = "btnParseKPI";
+            this.btnParseKPI.Size = new System.Drawing.Size(215, 43);
+            this.btnParseKPI.TabIndex = 9;
+            this.btnParseKPI.Text = "Parse KPI";
+            this.btnParseKPI.UseVisualStyleBackColor = true;
+            this.btnParseKPI.Click += new System.EventHandler(this.btnParseKPI_Click);
             // 
             // FormMain
             // 
@@ -527,6 +551,8 @@
         private System.Windows.Forms.Button btnParseMexBondsD;
         private System.Windows.Forms.Button btnParsePeriodicETF;
         private System.Windows.Forms.Button btnParseDailyETF;
+        private System.Windows.Forms.Button btnValidateKPI;
+        private System.Windows.Forms.Button btnParseKPI;
     }
 }
 

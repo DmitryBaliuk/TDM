@@ -17,7 +17,7 @@ namespace TDM.Controller
 {
     class GeneralController
     {
-        public void SerilizeHierarchy(Hierarchy obj)
+        public void SerilizeHierarchy(Hierarchy obj, string hierPath)
         {
             MemoryStream stream = new MemoryStream();
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Hierarchy));
@@ -26,7 +26,7 @@ namespace TDM.Controller
             stream.Close();
             string jsonStr = Encoding.UTF8.GetString(json, 0, json.Length);
             string result = JValue.Parse(jsonStr).ToString(Formatting.Indented);
-            File.WriteAllText(Constants.HierarchySource, result);
+            File.WriteAllText(hierPath, result);
         }
 
         public void SerilizeAssets(List<Asset> obj)
@@ -114,7 +114,9 @@ namespace TDM.Controller
             });
 
             var ser = new HierarchySerializator();
-            ser.SerializeHierarchy(hierarchy, hierarchyAssignment, hierarchyNodePairs);
+            ser.SerializeHierarchy(hierarchy, hierarchyAssignment, hierarchyNodePairs,
+                Constants.Res_HIERARCHY, Constants.Res_HIERARCHY_ASSIGNMENT,
+                Constants.Res_HIERARCHY_NODE);
 
 
             return result;
@@ -193,6 +195,17 @@ namespace TDM.Controller
         {
             List<Asset> result = (new AssetMasterSerializator()).DeserializeAssetCSV();
             return result;
+        }
+
+        public string ParseKPI()
+        {
+            string res = "1";
+            CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapKPI);
+            ETFParser parser = new ETFParser();
+            StringBuilder str = parser.parseSCV(Constants.Src_KPI, settings);
+            File.WriteAllText(Constants.Res_TimeSer_KPI, str.ToString());
+
+            return res;
         }
     }
 }
