@@ -10,7 +10,7 @@ namespace TDM.Parsers
 {
     class LongTermFixIncParser
     {
-        public StringBuilder parseSCV(string path, CSVSettingsMap setMap)
+        public StringBuilder parse_TimeS_SCV(string path, CSVSettingsMap setMap)
         {
             StringBuilder res = new StringBuilder();
             string[] content = File.ReadAllLines(path);
@@ -29,6 +29,28 @@ namespace TDM.Parsers
                     newLine += "," + prop.PropertySetType + "," + prop.PropertyId +
                         "," + (columns[prop.Position] == "" ? "0" : columns[prop.Position]) +
                         "," + columns[setMap.CurrencyPosition];
+                    res.AppendLine(newLine);
+                }
+            }
+            return res;
+        }
+        public StringBuilder parse_MasterD_SCV(string path, CSVSettingsMap setMap)
+        {
+            StringBuilder res = new StringBuilder();
+            string[] content = File.ReadAllLines(path);
+
+            foreach (var line in content)
+            {
+                string newLine = "";
+                string[] columns = line.Split(',');
+
+                foreach (var prop in setMap.MasterDataProps)
+                {
+                    newLine = "";
+                    newLine += columns[setMap.IdPosition] + ",";
+                    newLine += columns[setMap.AssetTypeIdPosition];
+                    newLine += "," + prop.PropertySetType + "," + prop.PropertyId +
+                        "," + (columns[prop.Position] == "" ? "0" : columns[prop.Position]);
                     res.AppendLine(newLine);
                 }
             }

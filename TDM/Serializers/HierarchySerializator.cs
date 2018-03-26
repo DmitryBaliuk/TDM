@@ -10,7 +10,7 @@ namespace TDM.Serializers
 {
     class HierarchySerializator
     {
-        public string SerializeHierarchy(Hierarchy hierarchy,
+        public string SerializeHierarchy(List<Hierarchy> hierarchy,
             List<HierarchyAssignment> hAssign, List<HierarchyNode> hNode,
             string hierPath, string hierAssignPath, string hierNodePath)
         {
@@ -19,15 +19,22 @@ namespace TDM.Serializers
             var hierarchyAssignCsv = new StringBuilder();
             var hierarchyNodeCsv = new StringBuilder();
 
-            if (hierarchy.HierarchyId.ToString().Length == 0)
+            foreach (var hier in hierarchy)
             {
-                result = "0";
+                if (hier.HierarchyId.ToString().Length == 0)
+                {
+                    result = "0";
+                }
+                else
+                {
+                    var hierarchyName = "";
+                    hierarchyName += hier.HierarchyName.ToString();
+                    hierarchyCsv.AppendLine(hier.HierarchyId.ToString() + "," + hierarchyName);
+                }
             }
-            else
+
+            if (result == "1")
             {
-                var hierarchyName = "";
-                hierarchyName += hierarchy.HierarchyName.ToString();
-                hierarchyCsv.AppendLine(hierarchy.HierarchyId.ToString() + "," + hierarchyName);
                 File.WriteAllText(hierPath, hierarchyCsv.ToString());
             }
 

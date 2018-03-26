@@ -48,6 +48,8 @@ namespace TDM
             "TDM Convertor files\\01 Long Term Fix Inc Mex\\src_long_term_fix_inc.csv";
         private static string res_TimeSerLongTermFixInc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
             "TDM Convertor files\\TimeSeriesResultCSV\\res_TimeSerLongTermFixInc.csv";
+        private static string res_MasterDLongTermFixInc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+            "TDM Convertor files\\TimeSeriesResultCSV\\res_MasterDTermFixInc.csv";
         private static string src_MexBondsDaily = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
             "TDM Convertor files\\02 Mex Bonds Daily based\\daily_mex_bond.csv";
         private static string res_TimeSerMexBondsDaily = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
@@ -92,5 +94,6 @@ namespace TDM
         public static string Src_KPI { get => src_KPI; set => src_KPI = value; }
         public static string Res_TimeSer_KPI { get => res_TimeSer_KPI; set => res_TimeSer_KPI = value; }
         public static string SetMapKPI { get => setMapKPI; set => setMapKPI = value; }
+        public static string Res_MasterDLongTermFixInc { get => res_MasterDLongTermFixInc; set => res_MasterDLongTermFixInc = value; }
     }
 }

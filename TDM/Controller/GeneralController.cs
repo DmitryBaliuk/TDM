@@ -69,6 +69,7 @@ namespace TDM.Controller
             string result = "1";
             string hierarchyPath = Constants.HierarchySource;
             Hierarchy hierarchy = DeserilizeHierarchy(hierarchyPath);
+            Hierarchy kpiHierarchy = DeserilizeHierarchy(Constants.KpiHierarchySrc);
             List<HierarchyAssignment> hierarchyAssignment = new List<HierarchyAssignment>();
             List<HierarchyNode> hierarchyNodePairs = new List<HierarchyNode>();
             HashSet<string> assets = new HashSet<string>();
@@ -77,6 +78,9 @@ namespace TDM.Controller
             var assetSerial = new AssetMasterSerializator();
             assetMaster = assetSerial.DeserializeAssetCSV();
 
+            // *******************************************************************************
+            // ASSET
+            // *******************************************************************************
             foreach (var hPair in hierarchy.HierarchyPairs)
             {
                 assets.Add(hPair[0]);
@@ -91,6 +95,12 @@ namespace TDM.Controller
                     NodeId = Guid.NewGuid().ToString("N")
                 });
             }
+            hierarchyAssignment.Add(new HierarchyAssignment()
+            {
+                HierarchyId = hierarchy.HierarchyId,
+                AssetId = hierarchy.RootAssetId,
+                NodeId = Guid.NewGuid().ToString("N")
+            });
             foreach (var hPair in hierarchy.HierarchyPairs)
             {
                 HierarchyAssignment child = hierarchyAssignment.Find(x => x.AssetId == hPair[0]);
@@ -112,9 +122,57 @@ namespace TDM.Controller
                 ParentNodeId = "0",
                 Name = assetMaster.Find(x => x.AssetId == hierarchy.RootAssetId).Name
             });
+            // *******************************************************************************
+            // KPI
+            // *******************************************************************************
+            foreach (var hPair in kpiHierarchy.HierarchyPairs)
+            {
+                assets.Add(hPair[0]);
+                assets.Add(hPair[1]);
+            }
+            foreach (string asset in assets)
+            {
+                hierarchyAssignment.Add(new HierarchyAssignment()
+                {
+                    HierarchyId = kpiHierarchy.HierarchyId,
+                    AssetId = asset,
+                    NodeId = Guid.NewGuid().ToString("N")
+                });
+            }
+            hierarchyAssignment.Add(new HierarchyAssignment()
+            {
+                HierarchyId = kpiHierarchy.HierarchyId,
+                AssetId = kpiHierarchy.RootAssetId,
+                NodeId = Guid.NewGuid().ToString("N")
+            });
+            foreach (var hPair in kpiHierarchy.HierarchyPairs)
+            {
+                HierarchyAssignment child = hierarchyAssignment.Find(x => x.AssetId == hPair[0]);
+                HierarchyAssignment parent = hierarchyAssignment.Find(x => x.AssetId == hPair[1]);
+                Asset asset = assetMaster.Find(x => x.AssetId == hPair[0]);
+                hierarchyNodePairs.Add(new HierarchyNode()
+                {
+                    NodeId = child.NodeId,
+                    HierarchyId = child.HierarchyId,
+                    ParentNodeId = parent.NodeId,
+                    Name = asset.Name == null ? "" : asset.Name
+                });
+            }
 
+            hierarchyNodePairs.Add(new HierarchyNode()
+            {
+                NodeId = hierarchyAssignment.Find(x => x.AssetId == kpiHierarchy.RootAssetId).NodeId,
+                HierarchyId = kpiHierarchy.HierarchyId,
+                ParentNodeId = "0",
+                Name = assetMaster.Find(x => x.AssetId == kpiHierarchy.RootAssetId).Name
+            });
+            //**********************************************************************************
+
+            List<Hierarchy> hiers = new List<Hierarchy>();
+            hiers.Add(hierarchy);
+            hiers.Add(kpiHierarchy);
             var ser = new HierarchySerializator();
-            ser.SerializeHierarchy(hierarchy, hierarchyAssignment, hierarchyNodePairs,
+            ser.SerializeHierarchy(hiers, hierarchyAssignment, hierarchyNodePairs,
                 Constants.Res_HIERARCHY, Constants.Res_HIERARCHY_ASSIGNMENT,
                 Constants.Res_HIERARCHY_NODE);
 
@@ -152,8 +210,10 @@ namespace TDM.Controller
             string res = "1";
             CSVSettingsMap settings = DeserilizeSCVSettings(Constants.SetMapCSVLongTerm);
             LongTermFixIncParser parser = new LongTermFixIncParser();
-            StringBuilder str = parser.parseSCV(Constants.Src_LongTermFixInc, settings);
-            File.WriteAllText(Constants.Res_TimeSerLongTermFixInc, str.ToString());
+            StringBuilder strTS = parser.parse_TimeS_SCV(Constants.Src_LongTermFixInc, settings);
+            StringBuilder strMD = parser.parse_MasterD_SCV(Constants.Src_LongTermFixInc, settings);
+            File.WriteAllText(Constants.Res_TimeSerLongTermFixInc, strTS.ToString());
+            File.WriteAllText(Constants.Res_MasterDLongTermFixInc, strMD.ToString());
 
             return res;
         }
