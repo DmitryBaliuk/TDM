@@ -70,6 +70,7 @@ namespace TDM.Controller
             string hierarchyPath = Constants.HierarchySource;
             Hierarchy hierarchy = DeserilizeHierarchy(hierarchyPath);
             Hierarchy kpiHierarchy = DeserilizeHierarchy(Constants.KpiHierarchySrc);
+            Hierarchy equityHierarchy = DeserilizeHierarchy(Constants.EquityHierarchySrc);
             List<HierarchyAssignment> hierarchyAssignment = new List<HierarchyAssignment>();
             List<HierarchyNode> hierarchyNodePairs = new List<HierarchyNode>();
             HashSet<string> assets = new HashSet<string>();
@@ -125,6 +126,7 @@ namespace TDM.Controller
             // *******************************************************************************
             // KPI
             // *******************************************************************************
+            assets = new HashSet<string>();
             foreach (var hPair in kpiHierarchy.HierarchyPairs)
             {
                 assets.Add(hPair[0]);
@@ -166,6 +168,52 @@ namespace TDM.Controller
                 ParentNodeId = "0",
                 Name = assetMaster.Find(x => x.AssetId == kpiHierarchy.RootAssetId).Name
             });
+            //**********************************************************************************
+            // *******************************************************************************
+            // KPI
+            // *******************************************************************************
+            //assets = new HashSet<string>();
+            //foreach (var hPair in equityHierarchy.HierarchyPairs)
+            //{
+            //    assets.Add(hPair[0]);
+            //    assets.Add(hPair[1]);
+            //}
+            //foreach (string asset in assets)
+            //{
+            //    hierarchyAssignment.Add(new HierarchyAssignment()
+            //    {
+            //        HierarchyId = equityHierarchy.HierarchyId,
+            //        AssetId = asset,
+            //        NodeId = Guid.NewGuid().ToString("N")
+            //    });
+            //}
+            //hierarchyAssignment.Add(new HierarchyAssignment()
+            //{
+            //    HierarchyId = equityHierarchy.HierarchyId,
+            //    AssetId = equityHierarchy.RootAssetId,
+            //    NodeId = Guid.NewGuid().ToString("N")
+            //});
+            //foreach (var hPair in equityHierarchy.HierarchyPairs)
+            //{
+            //    HierarchyAssignment child = hierarchyAssignment.Find(x => x.AssetId == hPair[0]);
+            //    HierarchyAssignment parent = hierarchyAssignment.Find(x => x.AssetId == hPair[1]);
+            //    Asset asset = assetMaster.Find(x => x.AssetId == hPair[0]);
+            //    hierarchyNodePairs.Add(new HierarchyNode()
+            //    {
+            //        NodeId = child.NodeId,
+            //        HierarchyId = child.HierarchyId,
+            //        ParentNodeId = parent.NodeId,
+            //        Name = asset.Name == null ? "" : asset.Name
+            //    });
+            //}
+            //
+            //hierarchyNodePairs.Add(new HierarchyNode()
+            //{
+            //    NodeId = hierarchyAssignment.Find(x => x.AssetId == equityHierarchy.RootAssetId).NodeId,
+            //    HierarchyId = equityHierarchy.HierarchyId,
+            //    ParentNodeId = "0",
+            //    Name = assetMaster.Find(x => x.AssetId == equityHierarchy.RootAssetId).Name
+            //});
             //**********************************************************************************
 
             List<Hierarchy> hiers = new List<Hierarchy>();

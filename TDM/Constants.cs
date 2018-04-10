@@ -12,6 +12,8 @@ namespace TDM
                "TDM Convertor files\\hierarchy.txt";
         private static string kpiHierarchySrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\KPIhierarchy.txt";
+        private static string equityHierarchySrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
+               "TDM Convertor files\\EquityHierarchy.txt";
         private static string metaModelSrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
                "TDM Convertor files\\metaModel.txt";
         private static string assetMasterSrc = "C:\\Users\\dmitr\\OneDrive\\02. LeverX\\01. TDM\\" +
@@ -95,5 +97,6 @@ namespace TDM
         public static string Res_TimeSer_KPI { get => res_TimeSer_KPI; set => res_TimeSer_KPI = value; }
         public static string SetMapKPI { get => setMapKPI; set => setMapKPI = value; }
         public static string Res_MasterDLongTermFixInc { get => res_MasterDLongTermFixInc; set => res_MasterDLongTermFixInc = value; }
+        public static string EquityHierarchySrc { get => equityHierarchySrc; set => equityHierarchySrc = value; }
     }
 }
